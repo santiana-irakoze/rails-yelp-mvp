@@ -1,0 +1,12 @@
+<h1 class="mb-4" style="color: green; font-weight: bold;">Update details</h1>
+<%= simple_form_for(@restaurant) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :phone_number %>
+  <div class="form-group">
+    <%= f.label :category, "Category:" %>
+    <%= f.select :category, Restaurant::CATEGORIES, {}, class: "form-control", style: "width: 350px; margin-top: 15px; margin-bottom: 15px;" %>
+  </div>
+  <%= f.submit %>
+<% end %>
+<%# <%= link_to 'List of all restaurants', restaurants_path, class: 'btn btn-sm btn-primary', style: "margin-top: 15px;" %>

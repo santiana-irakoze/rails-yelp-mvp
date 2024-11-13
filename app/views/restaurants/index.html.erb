@@ -1,0 +1,35 @@
+<%# <h1 class="mb-4" style="color: green; font-weight: bold;">Restaurants</h1> %>
+<%# <% @restaurants.each do |restaurant| %>
+  <%# <%=restaurant.name  %>
+  <%# <%=restaurant.address  %>
+  <%# <%=restaurant.phone_number  %>
+  <%# <%=restaurant.category  %>
+<%# <% end %>
+
+<div class="container my-5">
+  <h1 class="text-center text-success fw-bold mb-4">Restaurants</h1>
+
+  <div class="row">
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title text-primary"><%= restaurant.name %></h5>
+            <p class="card-text"><strong>Address:</strong> <%= restaurant.address %></p>
+            <p class="card-text"><strong>Phone:</strong> <%= restaurant.phone_number %></p>
+            <p class="card-text"><strong>Category:</strong> <%= restaurant.category.capitalize %></p>
+
+            <%= link_to 'Update', edit_restaurant_path(restaurant), class: 'btn btn-sm btn-warning' %>
+            <%= link_to 'See details', restaurant_path(restaurant), class: 'btn btn-sm btn-warning' %>
+            <%= link_to 'Delete', restaurant_path(restaurant), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-sm btn-outline-danger", title: "Delete" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Create new restaurant button -->
+    <div class="col-md-12 text-center mt-4">
+      <%= link_to 'Create new restaurant', new_restaurant_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+  </div>
+</div>
